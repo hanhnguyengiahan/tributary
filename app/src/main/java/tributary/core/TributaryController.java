@@ -11,6 +11,9 @@ public class TributaryController {
     private HashMap<String, Producer> producers;
     private HashMap<String, ConsumerGroup> consumerGroups;
     public TributaryController() {
+        topics = new HashMap<>();
+        producers = new HashMap<>();
+        consumerGroups = new HashMap<>();
     }
 
     public void createIntegerTopic(String id) {
