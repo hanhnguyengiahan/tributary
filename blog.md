@@ -102,15 +102,18 @@ List of scenarios:
 
    - Test correctness with the scenerio that Producers and Consumers are all running in parallel, operating on a shared resource.
 
-   3.2 Generics:
+     3.2 Generics:
 
    - Ensure that an object of any type can be used as an event payload in a tributary topic.
 
 4. Integration Test:
 
-- This integration test should make sure that:
+   This integration test should make sure that:
 
-a) Command line succeeds and leads to the right corresponding action, and exits when fails
-b) Operate on the producers alone should ensure correctness
-c) Operate on the consumers alone should ensure correctness
-d) Operate on both the producers and consumers concurrently should ensure correctness
+   a) Command line succeeds and leads to the right corresponding action, and exits when fails
+
+   b) Operate on the producers alone should ensure correctness
+
+   c) Operate on the consumers alone should ensure correctness
+
+   d) Operate on both the producers and consumers concurrently should ensure correctness
