@@ -10,6 +10,10 @@ public class Partition {
         this.id = id;
     }
 
+    public List<Message> getMessages() {
+        return messages;
+    }
+
     public void addMessage(Message message) {
         messages.add(message);
     }
