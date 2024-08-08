@@ -149,7 +149,7 @@
     </td>
   </tr>
   <tr>
-    <td><code>show consumer group &lt;group&gt;</code></td>
+    <td><code>show consumer_group &lt;group&gt;</code></td>
     <td></td>
     <td>
       Shows all consumers in the consumer group, and which partitions each
@@ -188,7 +188,7 @@
   </tr>
   <tr>
     <td>
-      <code>set consumer group rebalancing &lt;group&gt; &lt;rebalancing&gt;</code>
+      <code>set consumer_group_rebalancing &lt;group&gt; &lt;rebalancing&gt;</code>
     </td>
     <td>
       <ul>
