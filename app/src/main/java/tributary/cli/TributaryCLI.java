@@ -18,9 +18,9 @@ public class TributaryCLI {
             } else if (command.startsWith("delete")) {
                 Delete.processDelete(command);
             } else if (command.startsWith("produce")) {
-                Produce.produceEvent(command);
+                Produce.processProduce(command);
             } else if (command.startsWith("consume")) {
-                Consume.consumeEvent(command);
+                Consume.processConsume(command);
             } else if (command.startsWith("show")) {
                 Show.processShow(command);
             } else if (command.startsWith("set")) {

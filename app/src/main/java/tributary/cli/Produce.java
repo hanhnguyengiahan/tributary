@@ -1,11 +1,12 @@
 package tributary.cli;
 
 public class Produce {
-    public static void produceEvent(String command) {
+    public static void processProduce(String command) {
         String[] args = command.split(" ");
-        String producerId = args[2];
-        String topicId = args[3];
-        String eventJSONFile = args[4]; // TODO Need to parse this, also parse the partition key from JSON as well.
+        produceEvent(args[2], args[3], args[4]);
+    }
+
+    public static void produceEvent(String producerId, String topicId, String eventFilePath) {
 
     }
 }
