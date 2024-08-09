@@ -17,8 +17,8 @@ public class Topic<T> {
         return partitions;
     }
 
-    public void addPartition(String partitionId) {
-        partitions.add(new Partition(partitionId));
+    public void addPartition(Partition partition) {
+        partitions.add(partition);
     }
 
     public void addConsumerGroup(String consumerGroupId, RebalancingStrategy rebalancingStrategy) {

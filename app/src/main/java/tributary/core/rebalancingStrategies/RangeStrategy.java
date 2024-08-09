@@ -8,20 +8,24 @@ import tributary.core.Partition;
 public class RangeStrategy implements RebalancingStrategy {
     private void allocateUnevenly(List<Partition> partitions, List<Consumer> consumers) {
         int numPartitions = partitions.size() / consumers.size();
+        int extraPartitions = partitions.size() % consumers.size();
+        int remainingExtra = extraPartitions;
         int curConsumer = 0;
+        int curPartition = 0;
         while (curConsumer < consumers.size()) {
-            if (curConsumer == 0) {
-                for (int i = 0; i < numPartitions + 1; i++) {
-                    consumers.get(curConsumer).addPartition(partitions.get(i));
+            if (remainingExtra > 0) {
+                for (int i = 0; i < numPartitions + extraPartitions - 1; i++) {
+                    consumers.get(curConsumer).addPartition(partitions.get(curPartition));
+                    curPartition += 1;
                 }
+                remainingExtra -= 1;
             } else {
-                int start = curConsumer * numPartitions + 1;
-                for (int i = start; i < start + numPartitions; i++) {
-                    consumers.get(curConsumer).addPartition(partitions.get(i));
+                for (int i = 0; i < numPartitions; i++) {
+                    consumers.get(curConsumer).addPartition(partitions.get(curPartition));
+                    curPartition += 1;
                 }
             }
             curConsumer++;
-
         }
     }
 

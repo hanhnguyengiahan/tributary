@@ -1,27 +1,30 @@
 package tributary.core;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class Consumer {
     private String id;
-    private List<Partition> partitions;
+    private Topic topic;
+    private HashMap<String, Integer> partitions;
     public Consumer(String id) {
         this.id = id;
     }
     public void consumeMessage(Partition partition) {
-        // TODO
+        partition.consumeMessage();
     }
     public void consumeMessages(Partition partition, int numMessages) {
-        // TODO
+        partition.consumeMessages(numMessages);
     }
     public void parallelConsume(Partition partition) {
         // TODO
     }
     public void addPartition(Partition partition) {
-        partitions.add(partition);
+        partitions.put(partition.getId(), 0);
     }
     public void clearPartitions() {
-        partitions = new ArrayList<>();
+        partitions = new HashMap<>();
+    }
+    public void playback(Partition partition, int offset) {
+        partition.playback(offset);
     }
 }

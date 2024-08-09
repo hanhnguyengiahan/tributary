@@ -16,13 +16,13 @@ public class ConsumerGroup {
         this.rebalancingStrategy = rebalancingStrategy;
     }
 
-    public void addConsumer(String consumerId) {
-        consumers.add(new Consumer(consumerId));
+    public void addConsumer(Consumer consumer) {
+        consumers.add(consumer);
         rebalancingStrategy.allocatePartition(subscribedTopic.getPartitions(), consumers);
     }
 
-    public void deleteConsumer(String consumerId) {
-        consumers.remove(consumerId);
+    public void deleteConsumer(Consumer consumer) {
+        consumers.remove(consumer);
         rebalancingStrategy.allocatePartition(subscribedTopic.getPartitions(), consumers);
     }
 
