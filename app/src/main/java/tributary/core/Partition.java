@@ -1,5 +1,6 @@
 package tributary.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Partition {
@@ -9,6 +10,7 @@ public class Partition {
 
     public Partition(String id) {
         this.id = id;
+        this.messages = new ArrayList<>();
     }
 
     public List<Message> getMessages() {
@@ -23,10 +25,15 @@ public class Partition {
         return id;
     }
 
+    public int getNumConsumedMessages() {
+        return latestConsumedOffset;
+    }
+
     public synchronized void consumeMessage() {
         // TODO: implement consume mechanism
         latestConsumedOffset += 1;
     }
+
     public synchronized void consumeMessages(int numMessages) {
         int numMessageConsumed = 0;
         while (numMessageConsumed < numMessages && latestConsumedOffset < messages.size()) {
@@ -35,6 +42,7 @@ public class Partition {
             numMessageConsumed += 1;
         }
     }
+
     public synchronized void playback(int offset) {
         // playback from offset to the latest consumed message
         for (int i = offset; i < latestConsumedOffset; i++) {
