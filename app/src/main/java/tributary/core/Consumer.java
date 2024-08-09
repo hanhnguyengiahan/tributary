@@ -9,6 +9,7 @@ public class Consumer {
     private Topic<?> topic;
     private HashMap<String, Boolean> partitions;
     private List<Message<?>> consumedMessages;
+
     public Consumer(String id) {
         this.id = id;
         partitions = new HashMap<>();
@@ -26,9 +27,11 @@ public class Consumer {
     public void setTopic(Topic<?> topic) {
         this.topic = topic;
     }
+
     public void addConsumedMessage(Message<?> message) {
         consumedMessages.add(message);
     }
+
     private Partition extractPartition(String partitionId) {
         Boolean isValidPartition = partitions.get(partitionId);
         if (isValidPartition == null)
@@ -40,6 +43,7 @@ public class Consumer {
         Partition partition = extractPartition(partitionId);
         if (partition == null)
             return;
+        System.out.printf("Consumer (id: %s) is consuming: %n", id);
         partition.consumeMessage(this);
     }
 
@@ -47,6 +51,8 @@ public class Consumer {
         Partition partition = extractPartition(partitionId);
         if (partition == null)
             return;
+        System.out.printf("Consumer (id: %s) is consuming: %n", id);
+
         partition.consumeMessages(numMessages, this);
     }
 
@@ -64,5 +70,12 @@ public class Consumer {
 
     public void playback(Partition partition, int offset) {
         partition.playback(offset, this);
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Consumer Details:\n");
+        sb.append("ID: ").append(id).append("\n");
+        return sb.toString();
     }
 }
