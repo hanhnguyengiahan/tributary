@@ -1,13 +1,17 @@
 package tributary.core;
 
 public class Message<T> {
-    private MessageHeader header;
+    private String id;
     private String key;
     private T value;
 
-    public Message(MessageHeader header, String key, T value) {
-        this.header = header;
+    public Message(String id, String key, T value) {
+        this.id = id;
         this.key = key;
         this.value = value;
+    }
+
+    public String getDesirePartition() {
+        return key;
     }
 }
