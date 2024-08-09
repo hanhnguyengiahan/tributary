@@ -1,8 +1,10 @@
 package tributary.core;
 
-import java.util.HashMap;import tributary.core.allocateStrategies.AllocateStrategy;
+import java.util.HashMap;
+import tributary.core.allocateStrategies.AllocateStrategy;
 import tributary.core.allocateStrategies.ManualStrategy;
-import tributary.core.allocateStratimport ributary.core.rebalancingStrategies.RangeStrategy;
+import tributary.core.allocateStrategies.RandomStrategy;
+import tributary.core.rebalancingStrategies.RangeStrategy;
 import tributary.core.rebalancingStrategies.RebalancingStrategy;
 import tributary.core.rebalancingStrategies.RoundRobinStrategy;
 
@@ -133,9 +135,3 @@ public class TributaryController {
         return p.getPartitionSize();
     }
 }
-
-
-    
-    
-
-    
