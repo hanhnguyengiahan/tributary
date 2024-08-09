@@ -1,8 +1,7 @@
 package tributary.core;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import tributary.core.rebalancingStrategies.RebalancingStrategy;
 
 public class Topic<T> {
     private String id;
@@ -11,6 +10,8 @@ public class Topic<T> {
 
     public Topic(String id) {
         this.id = id;
+        this.partitions = new ArrayList<>();
+        this.consumerGroups = new ArrayList<>();
     }
 
     public List<Partition> getPartitions() {
@@ -21,8 +22,8 @@ public class Topic<T> {
         partitions.add(partition);
     }
 
-    public void addConsumerGroup(String consumerGroupId, RebalancingStrategy rebalancingStrategy) {
-        consumerGroups.add(new ConsumerGroup(consumerGroupId, this, rebalancingStrategy));
+    public void addConsumerGroup(ConsumerGroup consumerGroup) {
+        consumerGroups.add(consumerGroup);
     }
 
     public String show() {

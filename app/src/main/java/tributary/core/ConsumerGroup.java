@@ -1,6 +1,6 @@
 package tributary.core;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import tributary.core.rebalancingStrategies.RebalancingStrategy;
 
@@ -14,6 +14,7 @@ public class ConsumerGroup {
         this.id = id;
         this.subscribedTopic = subscribedTopic;
         this.rebalancingStrategy = rebalancingStrategy;
+        this.consumers = new ArrayList<>();
     }
 
     public void addConsumer(Consumer consumer) {
@@ -27,9 +28,9 @@ public class ConsumerGroup {
     }
 
     public String show() {
-        // TODO:
         return "hihi";
     }
+
     public void setRebalancingStrategy(RebalancingStrategy rebalancingStrategy) {
         this.rebalancingStrategy = rebalancingStrategy;
     }
